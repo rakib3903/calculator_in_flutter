@@ -43,46 +43,82 @@ class MyHomePage extends StatelessWidget {
         child: Column(
            mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            BigCard(pair: pair),
-            SizedBox(height:10),
-             ElevatedButton(
-              onPressed: () {
-                appState.getNext();
-              },
-              child: Text('next'),
+            Container(
+              width:300,
+              decoration: BoxDecoration(
+                  color: Colors.blueGrey, // Set the background color
+                  borderRadius: BorderRadius.circular(8), // Add border radius if needed
+                ),
+            child: TextFormField(
+              minLines: 2,
+              maxLines: 5,
+              decoration: InputDecoration(
+                enabled: true,
+                hintStyle: TextStyle(
+                  color: Colors.greenAccent,
+                 ),
+                 border:OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                 ) 
+          
+              ),
             ),
+            ),
+            SizedBox(height: 15),
+             Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      // Add your onPressed logic here
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.deepOrange,
+                      fixedSize: Size(150, 60), // Increase width and height
+                    ),
+                    child: Text('+',  style: TextStyle(fontSize: 18, color: Colors.white)),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Add your onPressed logic here
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.deepOrange,
+                      fixedSize: Size(150, 60), // Increase width and height
+                    ),
+                    child: Text('-',  style: TextStyle(fontSize: 18, color: Colors.white)),
+                  ),
+                ],
+              ),
+              SizedBox(height:10),
+              Row(
+                 mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      // Add your onPressed logic here
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.deepOrange,
+                      fixedSize: Size(150, 60), // Increase width and height
+                    ),
+                    child: Text('x', style: TextStyle(fontSize: 18, color: Colors.white)),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Add your onPressed logic here
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.grey,
+                      fixedSize: Size(150, 60), // Increase width and height
+                    ),
+                    child: Text('=', style: TextStyle(fontSize: 18, color: Colors.white)),
+                  ),
+                ],
+              ),
       
           ],
         ),
-      ),
-    );
-  }
-}
-
-class BigCard extends StatelessWidget {
-  const BigCard({
-    super.key,
-    required this.pair,
-  });
-
-  final WordPair pair;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final style = theme.textTheme.displayMedium!.copyWith(
-      color: theme.colorScheme.onPrimary,
-    );
- 
-    return Card(
-      color: theme.colorScheme.primary, 
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Text(
-          pair.asLowerCase,
-          style:style,
-          semanticsLabel: "${pair.first} ${pair.second}",
-          ),
       ),
     );
   }
